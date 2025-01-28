@@ -1,6 +1,7 @@
-import {useState} from 'react';
+import {useState, useCallback} from 'react';
 
 import quizComplete from '../assets/quiz-complete.png';
+import QuestionTimer from './QuestionTimer.jsx';
 import QUESTIONS from '../questions.js';
 
 export default function Quick() {
@@ -9,11 +10,14 @@ export default function Quick() {
     /* Deriving state from existing data */
     const currentActiveQuestionIndex = userAnswers.length;
 
-    function handleSelectAnswer(selectedAnswer) {
+    const handleSelectAnswer = useCallback(
+      function handleSelectAnswer(selectedAnswer) {
         setUserAnswers((prevUserAnswers) => {
-            return [...prevUserAnswers, selectedAnswer];
+          return [...prevUserAnswers, selectedAnswer];
         });
-    }
+      }, []);
+
+    const handleSkipAnswer = useCallback(() => handleSelectAnswer(null), [handleSelectAnswer]);
 
     if(currentActiveQuestionIndex === QUESTIONS.length) {
         return quizCompleted();
@@ -25,6 +29,11 @@ export default function Quick() {
     return (
       <div id="quiz">
         <div id="question">
+          <QuestionTimer
+            timeout={10000}
+            onTimeout={handleSkipAnswer}
+            key={currentActiveQuestionIndex} // to force remounting timer when question changes
+          />
           <h2>{QUESTIONS[currentActiveQuestionIndex].text}</h2>
           <ul id="answers">
             {shuffledAnswers.map((ans) => (
