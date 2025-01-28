@@ -1,5 +1,6 @@
 import {useState} from 'react';
 
+import quizComplete from '../assets/quiz-complete.png';
 import QUESTIONS from '../questions.js';
 
 export default function Quick() {
@@ -15,15 +16,18 @@ export default function Quick() {
     }
 
     if(currentActiveQuestionIndex === QUESTIONS.length) {
-        return <p>Quiz completed</p>;
+        return quizCompleted();
     }
+
+    const shuffledAnswers = [...QUESTIONS[currentActiveQuestionIndex].answers];
+    shuffledAnswers.sort((a, b) => Math.random() - 0.5);
 
     return (
       <div id="quiz">
         <div id="question">
           <h2>{QUESTIONS[currentActiveQuestionIndex].text}</h2>
           <ul id="answers">
-            {QUESTIONS[currentActiveQuestionIndex].answers.map((ans) => (
+            {shuffledAnswers.map((ans) => (
               <li key={ans} className="answer">
                 <button onClick={() => handleSelectAnswer(ans)}>{ans}</button>
               </li>
@@ -32,4 +36,11 @@ export default function Quick() {
         </div>
       </div>
     );
+}
+
+function quizCompleted() {
+  return <div id="summary">
+      <img src={quizComplete} alt="quiz complete" />
+      <h2>Quiz Completed!</h2>
+    </div>;
 }
