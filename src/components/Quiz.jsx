@@ -34,7 +34,7 @@ export default function Quick() {
             onTimeout={handleSkipAnswer}
             key={currentActiveQuestionIndex} // to force remounting timer when question changes
           />
-          <h2>{QUESTIONS[currentActiveQuestionIndex].text}</h2>
+          <h2>{currentActiveQuestionIndex+1}. {QUESTIONS[currentActiveQuestionIndex].text}</h2>
           <ul id="answers">
             {shuffledAnswers.map((ans) => (
               <li key={ans} className="answer">
