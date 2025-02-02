@@ -2,7 +2,7 @@ import QuestionTimer from "./QuestionTimer";
 import Answers from "./Answers";
 
 export default function Question({
-    questionText, answers,
+    index, questionText, answers,
     onSkipAnswer, selectedAnswer, answerState,
     onSelectAnswer}) {
     return <div id="question">
@@ -10,7 +10,7 @@ export default function Question({
             timeout={10000}
             onTimeout={onSkipAnswer}
             />
-        <h2 >{questionText}</h2>
+        <h2>{index+1}. {questionText}</h2>
         <Answers 
             answers={answers}
             selectedAnswer={selectedAnswer}

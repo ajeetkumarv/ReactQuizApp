@@ -43,6 +43,7 @@ export default function Quiz() {
       <div id="quiz">
         <Question
           key={currentActiveQuestionIndex}
+          index={currentActiveQuestionIndex}
           questionText={QUESTIONS[currentActiveQuestionIndex].text}
           answers={QUESTIONS[currentActiveQuestionIndex].answers}
           selectedAnswer={userAnswers[userAnswers.length - 1]}
