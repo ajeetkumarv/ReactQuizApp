@@ -4,7 +4,7 @@ import quizComplete from '../assets/quiz-complete.png';
 import QUESTIONS from '../questions.js';
 import Question from './Question.jsx';
 
-export default function Quick() {
+export default function Quiz() {
     const [answerState, setAnswerState] = useState(''); // empty means unanswered
     const [userAnswers, setUserAnswers] = useState([]);
 
