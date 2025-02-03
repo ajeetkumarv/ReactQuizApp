@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 export default function Answers( {answers, selectedAnswer, answerState, onSelect} ) {
     const shuffledAnswers = useRef();
-    console.log('Answer state: ', answerState);
+    
     if (!shuffledAnswers.current) {
         shuffledAnswers.current = [...answers];
         shuffledAnswers.current.sort((a, b) => Math.random() - 0.5);

@@ -26,12 +26,10 @@ export default function Question({
                 selectedAnswer: answer,
                 isCorrect: QUESTIONS[index].answers[0] === answer // we know the first option is correct, it's set that way.
             })
-
             setTimeout(() => {
                 onSelectAnswer(answer);
             }, 2000);
         }, 1000);
-
     }
 
     let answerState = '';
