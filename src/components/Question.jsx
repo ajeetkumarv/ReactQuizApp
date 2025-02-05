@@ -49,7 +49,7 @@ export default function Question({
     } else if (answer.selectedAnswer) {
         answerState = 'answered';
     }
-    console.log('Index ', index, ' timer ', timer);
+
     return <div id="question">
         <QuestionTimer
             key={timer}
