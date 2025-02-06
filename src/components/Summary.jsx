@@ -22,10 +22,21 @@ export default function Summary({userAnswers}) {
             <ol>
               {
                 userAnswers.map((answer, index) => {
+
+                  let cssStyle = 'user-answer';
+
+                  if (answer === null) {
+                    cssStyle += ' skipped';
+                  } else if(answer ===  QUESTIONS[index].answers[0]) {
+                    cssStyle += ' correct';
+                  } else {
+                    cssStyle += ' wrong';
+                  }
+
                   return <li key={index+1}>
                     <h3>{index + 1}</h3>
                     <p className='question'>{QUESTIONS[index].text}</p>
-                    <p className='user-answer'>{answer ?? 'Skipped'}</p>
+                    <p className={cssStyle}>{answer ?? 'Skipped'}</p>
                   </li>;
                 })
               }
