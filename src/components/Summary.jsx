@@ -22,7 +22,7 @@ export default function Summary({userAnswers}) {
             <ol>
               {
                 userAnswers.map((answer, index) => {
-                  return <li key={answer}>
+                  return <li key={index+1}>
                     <h3>{index + 1}</h3>
                     <p className='question'>{QUESTIONS[index].text}</p>
                     <p className='user-answer'>{answer ?? 'Skipped'}</p>
