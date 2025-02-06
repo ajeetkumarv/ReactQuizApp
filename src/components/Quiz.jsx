@@ -22,7 +22,7 @@ export default function Quiz() {
       [handleSelectAnswer]);
 
     if(currentActiveQuestionIndex === QUESTIONS.length) {
-        return <Summary />
+        return <Summary userAnswers={userAnswers}/>
     }
 
     return (
